@@ -7,11 +7,123 @@
 * Le [forum Piazza](https://piazza.com/class/jpv7gf0lltk4kc) de ce cours pour poser vos questions
 * [Email](mailto:petru.valicov@umontpellier.fr) pour une question d'ordre privée concernant le cours.
 
-## TP 3 : Objets, références, petite application orientée objet
+## TP 3 : *Java* - références, constructeurs, première application orientée objets
 
-### Instructions
-* Pour chaque exercice vous allez travailler dans un package différent. Ainsi, pour réaliser les fonctionnalités
-demandées dans un exercice (numéro`n`), vous copierez dans le package correspondant le code obtenu pour l'exercice précédent (`n-1`)
- et vous ajouterez ou modifierez ou le code qui manque.
- 
-* Pensez à respecter les conventions de nommage.
+On se propose ici de réaliser une application de gestion des étudiants dans un département informatique d'un IUT. 
+L'objectif est de développer l'application de manière incrémentale en ajoutant les fonctionnalités demandées au fur et à mesure. Le travail en mode TDD (développement piloté par des tests) pourrait vous être utile.
+
+Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE pour réaliser les tâches courantes (renommage d'attributs/méthodes, génération des différentes méthodes : constructeurs, setters, getters, etc.).
+
+**Important :** Afin de garder une trace de la progression de votre application, il vous est demandé de travailler dans **un package différent pour chaque exercice**. Pour cela, vous copierez les classes écrites pour un exercice dans le package de l'exercice suivant à l'aide de l'IDE dans le panneau *Project* à gauche pour qu'il corrige automatiquement les déclarations de package. 
+
+[Lien pour forker le projet]
+
+### Consignes
+- Sauf indication contraire, **tous** les attributs que vous allez déclarer dans ce TP (et dans les TPs qui suivent) doivent être privés (`private`).
+- A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
+
+# Exercice 1
+
+1. Créez et implémentez la classe `Etudiant` avec les attributs suivants : nom, prénom, date de naissance, adresse mail, adresse postale. Pour représenter les dates vous pouvez utiliser la classe statique `LocalDate` du package `java.time`. La syntaxe pour la création d'une date est la suivante :
+    ```java
+    LocalDate maDate = LocalDate.of(2019, Month.FEBRUARY, 4);
+    ```
+    
+    **Astuce :** Si vous utilisez la classe `LocalDate` dans votre code sans l'importer, l'IDE vous proposera automatiquement de l'importer (placez le curseur sur le nom de la classe et appuyez sur <kbd>Alt</kbd>+<kbd>↵</kbd> pour ajouter automatiquement la ligne `import java.time.LocalDate;` au début de votre fichier).
+    
+    Pour représenter les autres attributs vous pouvez utiliser le type `String`. Munissez également la classe d’un constructeur.
+    
+    **Astuce :** L'IDE peut générer automatiquement le code des méthodes usuelles pour une classe. Ainsi, après avoir déclaré les attributs de votre classe, faites un clic droit dans le code de la classe et sélectionnez «*Generate...*» (ou <kbd>Ctrl</kbd>+<kbd>N</kbd>) puis choisissez «*Constructor*». Sélectionnez les attributs que vous souhaitez passer directement en argument au constructeur (ici tous) et validez. Vous pouvez évidemment modifier par la suite le constructeur ainsi généré.
+
+1. Créez la méthode `toString()` (qui renvoie un objet de type `String`) générant un texte de présentation des  informations concernant l'objet `Etudiant`.
+
+    **Attention :** cette méthode n’affiche rien, elle se contente de produire une chaîne de caractères. Ce à quoi sert ce texte (par ex. à être affiché à l’écran, ou être écrit dans un fichier) dépend de l’utilisation de la méthode.
+
+1. Ajoutez une fonction `setNom(...)` qui permet de changer le nom et le prénom d'un objet de type `Etudiant`.
+
+1. Vérifiez votre solution dans le programme principal (la classe `GestionEtudiants`) en instanciant dans la méthode `main(...)` une variable `lolo` de type `Etudiant` et en affichant ses informations.
+    
+    **Astuce :** L'IDE possède des raccourcis pour les morceaux de codes fréquemment utilisés. Par exemple, pour déclarer la fonction `main` dans une classe, tapez «`psvm`» à l'endroit où vous souhaitez insérer la fonction et appuyez sur la touche <kbd>↹</kbd> (tabulation) pour que «`psvm`» soit remplacé par la déclaration complète de la fonction `main`. Vous pouvez voir la liste des raccourcis disponibles à tout moment en appuyant sur <kbd>Ctrl</kbd>+<kbd>J</kbd> (les raccourcis disponibles dépendent du contexte, par exemple si vous êtes en train d'écrire une méthode, directement à la racine d'une classe, etc.).
+
+1. Créez une nouvelle variable `toto` de type `Etudiant` construite avec exactement les mêmes paramètres que `lolo`. Comparez les deux variables avec l'opérateur `==`. Que constatez-vous ?
+
+1. Modifiez votre programme pour faire en sorte que `toto` fasse référence à `lolo`. Vérifiez qu'une modification des attributs de `toto` se répercute bien sur `lolo`.
+
+1. Créez une classe `Departement` qui aura comme attributs une spécialité, une adresse et un tableau d'étudiants inscrits géré sous forme de liste. Pour déclarer une telle liste vous pouvez utiliser la classe `ArrayList` du package `java.util` (voir un exemple dans le cours). Munissez la classe d'un constructeur, qui prend comme paramètre un intitulé et une adresse. Définissez la méthode `toString()` dans `Departement` avec un texte qui liste l'ensemble des étudiants du département.
+
+    **Indication :** Pensez à utiliser les fonctionnalités de l'IDE pour importer la classe `ArrayList` et pour générer le constructeur et la méthode `toString`.
+
+1. Ajoutez une méthode `inscrire(...)` dans la classe `Departement` qui prend en paramètre un étudiant et l'ajoute aux étudiants inscrits du département.
+
+1. Ajoutez une méthode `desinscrire(...)` qui supprime un étudiant passé en paramètre de la liste des étudiants inscrits.
+
+1. Vérifiez le bon fonctionnement de votre application dans la classe principale en créant un département `monDepInfo` et en y inscrivant quatre étudiants (dont `toto` et `lolo` définis précédemment). Désinscrivez ensuite `toto` du département. Que constatez-vous ?
+
+# Exercice 2
+
+**Rappel :** Pour préserver le code écrit dans l'exercice précédent copiez l'ensemble des classes du package `fr.umontpellier.iut.exo1` dans le package `fr.umontpellier.iut.exo2` en utilisant les outils de *refactoring* de l'IDE.
+
+On souhaite étoffer le modèle objet conçu auparavant en y incluant les aspects pédagogiques du département. Pour cela on vous demande de gérer les *matières*, les *enseignants* et les *notes*. 
+
+1. Une `Matiere` est définie par un intitulé, un coefficient (une valeur réelle qui pourra servir pour le calcul d'une moyenne) et un `Professeur` responsable (une classe avec un nom et un prénom). Créez la classe correspondante avec un constructeur adéquat. Ajoutez dans `Matiere` une méthode accesseur `getCoefficient` qui retourne le coefficient.
+
+1. Une `Note` est définie par une matière et par un nombre réel (qui représente la valeur de la note). Déclarez la classe correspondante et ajoutez des méthodes accesseurs pour chacun des attributs.
+
+1. Ajoutez à la classe `Etudiant` un attribut correspondant à la liste de ses notes et une méthode `noter(...)` qui prend en paramètre une matière et une valeur réelle, et ajoute une `Note` à la liste des notes de l'étudiant.
+
+1. Sans toucher au code des autres classes, ajoutez à la classe `Etudiant` une méthode `calculerMoyenne()` qui permet de calculer la moyenne des notes de l'étudiant. Pensez à ajouter des tests unitaires pour vérifier le bon fonctionnement de cette fonction.
+
+1. Vérifiez que votre programme fonctionne bien dans la classe principale.
+
+1. Construisez le diagramme de classes correspondant au programme *Java* que vous avez écrit. Vous pouvez le faire sur papier ou en utilisant un logiciel de modélisation.
+
+# Exercice 3 (Bonus)
+
+Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien entendu, le nombre de paramètres risque de croître car beaucoup d'autres attributs sont susceptibles d'être ajoutés. Lorsqu'on construit une instance d'`Etudiant` il est facile de se tromper dans l'ordre des paramètres du constructeur. Heureusement que l'IDE vous aide en vous  suggérant cette ordre lorsque vous programmez... De plus, les valeurs de certains attributs peuvent être inconnues au moment de la construction de l'objet : l'adresse de l'étudiant n'est pas encore connue car l'attribution des logements universitaires par les organismes correspondants n'a pas encore eu lieu; l'adresse mail étudiante n'est pas encore active au moment de l'inscription de l'étudiant, etc. Plusieurs solutions peuvent être envisagées.
+
+1. Une solution est de définir plusieurs constructeurs avec différents paramètres et de les faire collaborer. Ainsi l'utilisateur pourra choisir le constructeur qui lui convient. C’est ce qu’on appelle une *construction télescopique*.
+
+    Créez une nouvelle classe `EtudiantTelescopique` (en copiant les attributs de la classe `Etudiant`) et modifiez-la afin de pouvoir instancier les étudiants de différentes manières :
+    - en indiquant uniquement le nom et le prénom
+    - en indiquant uniquement le nom, le prénom et la date de naissance
+    - en indiquant uniquement le nom, le prénom et le mail
+
+    Vérifiez votre programme dans la classe principale.
+
+1. Avec cette approche, est-il possible d'ajouter un constructeur supplémentaire afin d'indiquer uniquement le nom, le prénom et l'adresse ? Pourquoi ?
+
+1. Une autre solution serait de suivre le modèle *Java Beans*, en proposant un seul constructeur minimal et en fournissant des méthodes modifieurs (*setters*) pour chaque attribut de la classe. Créez une telle classe appelée `EtudiantJavaBeans`. Voici comment se fera alors la construction des objets de ce type :
+
+    ```java
+    class GestionEtudiants {
+        public static void main(String args[]) {
+    		  EtudiantJavaBeans toto = new EtudiantJavaBeans();
+    		  toto.setNom("Dupont");
+    		  toto.setDateDeNaissance(LocalDate.of(2000, Month.JANUARY, 28));
+    		  /* ... */
+    		  toto.setAdresse("1, av. des Champs-Elysées, 75008 Paris");
+        }
+    }
+    ```
+
+1. Comparez cette solution avec celle de la classe `EtudiantTelescopique`. Quels sont les avantages et les inconvénients ?
+
+1. Finalement, on vous demande de développer une solution en combinant les bonnes idées des deux versions précédentes. Voici comment on voudrait pouvoir créer des étudiants dans la classe principale :
+    
+    ```java
+    class GestionEtudiants {
+        public static void main(String args[]) {
+    		  Etudiant lolo = new EtudiantBuilder()
+    		      .ajouterNom("Dupont")
+    		      .ajouterPrenom("Philippe")
+    		      .ajouterDateNaissance(LocalDate.of(2000, Month.JANUARY, 28))
+    		      .ajouterMail("dupont@etu.umontpellier.fr")
+    		      .ajouterAdresse("1, av. des Champs-Elysées, 75008 Paris")
+    		      .build();
+        }
+    }
+    ```
+    
+    Remarquez qu'il n'y a qu'un seul symbole `;` dans le programme ci-dessus. Autrement dit, l'instanciation de l'objet se fait avec une seule instruction, qui a été écrite sur plusieurs lignes pour plus de lisibilité.
+    
+    Ajoutez la classe `EtudiantBuilder` à votre application pour que l'instruction ci-dessus fonctionne.
