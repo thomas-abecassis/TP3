@@ -43,7 +43,12 @@ Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE 
 
 1. Vérifiez votre solution dans le programme principal (la classe `GestionEtudiants`) en instanciant dans la méthode `main(...)` une variable `lolo` de type `Etudiant` et en affichant ses informations.
     
-    **Astuce :** L'IDE possède des raccourcis pour les morceaux de codes fréquemment utilisés. Par exemple, pour déclarer la fonction `main` dans une classe, tapez «`psvm`» à l'endroit où vous souhaitez insérer la fonction et appuyez sur la touche <kbd>↹</kbd> (tabulation) pour que «`psvm`» soit remplacé par la déclaration complète de la fonction `main`. Vous pouvez voir la liste des raccourcis disponibles à tout moment en appuyant sur <kbd>Ctrl</kbd>+<kbd>J</kbd> (les raccourcis disponibles dépendent du contexte, par exemple si vous êtes en train d'écrire une méthode, directement à la racine d'une classe, etc.).
+    **Astuce :** L'IDE possède des raccourcis pour les morceaux de codes fréquemment utilisés. Par exemple, pour
+    faire un affichage à la console avec `System.out.println()`, tapez «`sout`» à l'endroit où vous souhaitez insérer
+    l'instruction la fonction et appuyez sur la touche <kbd>↹</kbd> (tabulation) pour que «`sout`» soit remplacé par
+    la déclaration complète (`System.out.println()`). Vous pouvez voir la liste des raccourcis disponibles à tout moment
+     en appuyant sur <kbd>Ctrl</kbd>+<kbd>J</kbd> (les raccourcis disponibles dépendent du contexte, par exemple si
+     vous êtes en train d'écrire une méthode, directement à la racine d'une classe, etc.).
 
 1. Créez une nouvelle variable `toto` de type `Etudiant` construite avec exactement les mêmes paramètres que `lolo`. Comparez les deux variables avec l'opérateur `==`. Que constatez-vous ?
 
@@ -65,7 +70,9 @@ Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE 
 
 On souhaite étoffer le modèle objet conçu auparavant en y incluant les aspects pédagogiques du département. Pour cela on vous demande de gérer les *matières*, les *enseignants* et les *notes*. 
 
-1. Une `Matiere` est définie par un intitulé, un coefficient (une valeur réelle qui pourra servir pour le calcul d'une moyenne) et un `Professeur` responsable (une classe avec un nom et un prénom). Créez la classe correspondante avec un constructeur adéquat. Ajoutez dans `Matiere` une méthode accesseur `getCoefficient` qui retourne le coefficient.
+1. Une `Matiere` est définie par un intitulé, un coefficient (une valeur réelle qui pourra servir pour le calcul d'une moyenne)
+et un `Professeur` responsable (une classe avec des attributs nom et prénom). Créez la classe correspondante
+avec un constructeur adéquat. Ajoutez dans `Matiere` une méthode accesseur `getCoefficient()` qui retourne le coefficient.
 
 1. Une `Note` est définie par une matière et par un nombre réel (qui représente la valeur de la note). Déclarez la classe correspondante et ajoutez des méthodes accesseurs pour chacun des attributs.
 
@@ -83,7 +90,7 @@ Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien ent
 
 1. Une solution est de définir plusieurs constructeurs avec différents paramètres et de les faire collaborer. Ainsi l'utilisateur pourra choisir le constructeur qui lui convient. C’est ce qu’on appelle une *construction télescopique*.
 
-    Créez une nouvelle classe `EtudiantTelescopique` (en copiant les attributs de la classe `Etudiant`) et modifiez-la afin de pouvoir instancier les étudiants de différentes manières :
+    Créez une nouvelle classe `EtudiantTelescopique` (en copiant les attributs de la classe `Etudiant` de l'exercice 2) et modifiez-la afin de pouvoir instancier les étudiants de différentes manières :
     - en indiquant uniquement le nom et le prénom
     - en indiquant uniquement le nom, le prénom et la date de naissance
     - en indiquant uniquement le nom, le prénom et le mail
@@ -127,3 +134,10 @@ Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien ent
     Remarquez qu'il n'y a qu'un seul symbole `;` dans le programme ci-dessus. Autrement dit, l'instanciation de l'objet se fait avec une seule instruction, qui a été écrite sur plusieurs lignes pour plus de lisibilité.
     
     Ajoutez la classe `EtudiantBuilder` à votre application pour que l'instruction ci-dessus fonctionne.
+    
+**Remarque :** Observez que la classe `EtudiantBuilder` sert uniquement à instancier des objets `Etudiant` de manière
+"organisée". D'autre part, il est toujours possible d'instancier un objet de type `Etudiant` sans utiliser le _builder_...
+ C'est pour cela qu'il est possible d'améliorer la dernière solution en déclarant la classe `EtudiantBuilder`
+comme classe interne statique de la classe `Etudiant` et de rendre `private` le constructeur de la calsse `Etudiant`.
+Ainsi la construction pourra se faire exclusivement à travers le _builder_ qui pourra servira uniquement à la construction
+des objets de type `Etudiant`. Pour plus de détails et explications : _Effective Java_, J. Blosch, (2nd or 3rd edition)
