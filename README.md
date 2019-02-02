@@ -21,7 +21,7 @@ Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE 
 ### Consignes
 - Sauf indication contraire, **tous** les attributs que vous allez déclarer dans ce TP (et dans les TPs qui suivent) doivent être privés (`private`).
 - A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
-- Pensez à respecter les connventions de nommage *Java* (vues en [cours](http://pageperso.lif.univ-mrs.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle)
+- Pensez à respecter les conventions de nommage *Java* (vues en [cours](http://pageperso.lif.univ-mrs.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf) ou disponibles sur le site d'Oracle)
 
 # Exercice 1
 
@@ -105,11 +105,11 @@ Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien ent
     ```java
     class GestionEtudiants {
         public static void main(String args[]) {
-    		  EtudiantJavaBeans toto = new EtudiantJavaBeans();
-    		  toto.setNom("Dupont");
-    		  toto.setDateDeNaissance(LocalDate.of(2000, Month.JANUARY, 28));
-    		  /* ... */
-    		  toto.setAdresse("1, av. des Champs-Elysées, 75008 Paris");
+            EtudiantJavaBeans toto = new EtudiantJavaBeans();
+            toto.setNom("Dupont");
+            toto.setDateDeNaissance(LocalDate.of(2000, Month.JANUARY, 28));
+            /* ... */
+            toto.setAdresse("1, av. des Champs-Elysées, 75008 Paris");
         }
     }
     ```
@@ -121,13 +121,13 @@ Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien ent
     ```java
     class GestionEtudiants {
         public static void main(String args[]) {
-    		  Etudiant lolo = new EtudiantBuilder()
-    		      .ajouterNom("Dupont")
-    		      .ajouterPrenom("Philippe")
-    		      .ajouterDateNaissance(LocalDate.of(2000, Month.JANUARY, 28))
-    		      .ajouterMail("dupont@etu.umontpellier.fr")
-    		      .ajouterAdresse("1, av. des Champs-Elysées, 75008 Paris")
-    		      .build();
+            Etudiant lolo = new EtudiantBuilder()
+                .ajouterNom("Dupont")
+                .ajouterPrenom("Philippe")
+                .ajouterDateNaissance(LocalDate.of(2000, Month.JANUARY, 28))
+                .ajouterMail("dupont@etu.umontpellier.fr")
+                .ajouterAdresse("1, av. des Champs-Elysées, 75008 Paris")
+                .build();
         }
     }
     ```
