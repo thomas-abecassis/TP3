@@ -14,17 +14,22 @@ Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'es
     * `du -sh *` pour voir combien d'espace vous avez déjà utilisé pour chaque fichier (sans fichiers cachés)
     * `du -sch .[!.]* *` pour voir combien d'espace vous avez déjà utilisé pour chaque fichier, y compris les fichiers cachés
 * Supprimez les fichiers inutiles.
-* Pour évitez des problèmes durant vos TPs d'informatique, vous devriez toujours **garder 300-400 Mo d'espace libre**.
+* Pour éviter des problèmes durant vos TPs d'informatique, vous devriez toujours **garder 300-400 Mo d'espace libre**.
 
 
 ## TP 3 : *Java* - références, constructeurs, première application orientée objets
 
 On se propose ici de réaliser une application de gestion des étudiants dans un département informatique d'un IUT. 
-L'objectif est de développer l'application de manière incrémentale en ajoutant les fonctionnalités demandées au fur et à mesure. Le travail en mode TDD (développement piloté par des tests) pourrait vous être utile.
+L'objectif est de développer l'application de manière incrémentale en ajoutant les fonctionnalités demandées au fur et à mesure.
+<!-- Le travail en mode TDD (développement piloté par des tests) pourrait vous être utile.-->
 
 Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE pour réaliser les tâches courantes (renommage d'attributs/méthodes, génération des différentes méthodes : constructeurs, setters, getters, etc.).
 
-**Important :** Afin de garder une trace de la progression de votre application, il vous est demandé de travailler dans **un package différent pour chaque exercice**. Pour cela, vous copierez les classes écrites pour un exercice dans le package de l'exercice suivant à l'aide de l'IDE dans le panneau *Project* à gauche pour qu'il corrige automatiquement les déclarations de package. 
+**Important :** Afin de garder une trace de la progression de votre application, il vous est demandé de travailler dans
+**un package différent pour chaque exercice**. Pour cela, vous copierez les classes écrites pour un exercice dans le
+package de l'exercice suivant à l'aide de l'IDE dans le panneau *Project* à gauche pour qu'il corrige automatiquement
+les déclarations de package. Garder une trace de progression pour chaque exercice vous permettra de mieux comparer
+votre travail pour chaque exercice et vous permettra également de mieux _réviser_ plus tard. 
 
 [Lien pour forker le projet]
 
@@ -53,7 +58,7 @@ Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE 
     
     Pour représenter les autres attributs vous pouvez utiliser le type `String`. Munissez également la classe d’un constructeur.
     
-    **Astuce :** L'IDE peut générer automatiquement le code des méthodes usuelles pour une classe. Ainsi, après avoir déclaré les attributs de votre classe, faites un clic droit dans le code de la classe et sélectionnez «*Generate...*» (ou <kbd>Ctrl</kbd>+<kbd>N</kbd>) puis choisissez «*Constructor*». Sélectionnez les attributs que vous souhaitez passer directement en argument au constructeur (ici tous) et validez. Vous pouvez évidemment modifier par la suite le constructeur ainsi généré.
+    **Astuce :** L'IDE peut générer automatiquement le code des méthodes usuelles pour une classe. Ainsi, après avoir déclaré les attributs de votre classe, faites un clic droit dans le code de la classe et sélectionnez «*Generate...*» (ou <kbd>Alt</kbd>+<kbd>Insert</kbd>) puis choisissez «*Constructor*». Sélectionnez les attributs que vous souhaitez passer directement en argument au constructeur (ici tous) et validez. Vous pouvez évidemment modifier par la suite le constructeur ainsi généré.
 
 1. Créez la méthode `toString()` (qui renvoie un objet de type `String`) générant un texte de présentation des  informations concernant l'objet `Etudiant`.
 
@@ -110,7 +115,7 @@ de calculer la moyenne des notes de l'étudiant. Pensez à ajouter des tests uni
    * donnez un nom approprié à votre classe de tests unitaires (par ex. `EtudiantTest`) et cliquez sur _Ok_.
    
   Comme pour le TP précédent, la classe de tests générée sera automatiquement placée dans le même package que la classe
-  testée et dans le répertoire correspondant aux tests (. Pour écrire vos tests, vous pouvez vous inspirer des exemples vues dans le TP précédent.
+  testée et dans le répertoire correspondant aux tests. Pour écrire vos tests, vous pouvez vous inspirer des exemples vues dans le TP précédent.
 
 1. Vérifiez que votre programme fonctionne bien dans la classe principale.
 
@@ -118,9 +123,14 @@ de calculer la moyenne des notes de l'étudiant. Pensez à ajouter des tests uni
 
 # Exercice 3 (Bonus)
 
-Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien entendu, le nombre de paramètres risque de croître car beaucoup d'autres attributs sont susceptibles d'être ajoutés. Lorsqu'on construit une instance d'`Etudiant` il est facile de se tromper dans l'ordre des paramètres du constructeur. Heureusement que l'IDE vous aide en vous  suggérant cette ordre lorsque vous programmez... De plus, les valeurs de certains attributs peuvent être inconnues au moment de la construction de l'objet : l'adresse de l'étudiant n'est pas encore connue car l'attribution des logements universitaires par les organismes correspondants n'a pas encore eu lieu; l'adresse mail étudiante n'est pas encore active au moment de l'inscription de l'étudiant, etc. Plusieurs solutions peuvent être envisagées.
+Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien entendu, le nombre de paramètres risque
+de croître car beaucoup d'autres attributs sont susceptibles d'être ajoutés à la classe `Etudiant`.
+Observez aussi que lorsqu'on construit une instance d'`Etudiant` il est facile de se tromper dans l'ordre des paramètres
+du constructeur. Heureusement que l'IDE vous aide en vous  suggérant cette ordre lorsque vous programmez...
+De plus, les valeurs de certains attributs peuvent être inconnues au moment de la construction de l'objet : l'adresse de l'étudiant n'est pas encore connue car l'attribution des logements universitaires par les organismes correspondants n'a pas encore eu lieu; l'adresse mail étudiante n'est pas encore active au moment de l'inscription de l'étudiant, etc. Plusieurs solutions peuvent être envisagées.
 
-1. Une solution est de définir plusieurs constructeurs avec différents paramètres et de les faire collaborer. Ainsi l'utilisateur pourra choisir le constructeur qui lui convient. C’est ce qu’on appelle une *construction télescopique*.
+1. Une solution est de définir plusieurs constructeurs avec différents paramètres et de les faire collaborer (voir exemples en [cours](http://pageperso.lif.univ-mrs.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf)).
+Ainsi l'utilisateur pourra choisir le constructeur qui lui convient. C’est ce qu’on appelle une *construction télescopique*.
 
     Créez une nouvelle classe `EtudiantTelescopique` (en copiant les attributs de la classe `Etudiant` de l'exercice 2) et modifiez-la afin de pouvoir instancier les étudiants de différentes manières :
     - en indiquant uniquement le nom et le prénom
@@ -167,11 +177,11 @@ Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien ent
     
     Ajoutez la classe `EtudiantBuilder` à votre application pour que l'instruction ci-dessus fonctionne.
     
-**Remarque :** Vous noterez que la classe `EtudiantBuilder` sert uniquement à instancier des objets `Etudiant` de manière
+**Pour aller plus loin :** Vous noterez que la classe `EtudiantBuilder` sert uniquement à instancier des objets `Etudiant` de manière
 "organisée" et lisible. Le problème est qu'il est toujours possible d'instancier un objet de type `Etudiant`
 sans utiliser le _builder_ que vous avez écrit...
 C'est pour cela qu'il est possible d'améliorer la dernière solution en déclarant la classe `EtudiantBuilder`
 comme classe interne statique de la classe `Etudiant` et de rendre `private` le constructeur de la calsse `Etudiant`.
-Ainsi la construction pourra se faire exclusivement à travers le _builder_ qui pourra servira uniquement à la construction
-des objets de type `Etudiant`. Pour plus de détails et explications, voir le modèle de conception _Builder_.
+Ainsi la construction pourra se faire exclusivement à travers le _builder_ et celui-ci servira uniquement à la construction
+des objets de type `Etudiant`, car c'est son seul rôle. Pour plus de détails et explications, voir le modèle de conception _Builder_.
  Une explication approfondie est donnée dans _Effective Java_, J. Blosch, (2nd or 3rd edition).
