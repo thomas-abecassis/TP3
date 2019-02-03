@@ -1,5 +1,4 @@
 package fr.umontpellier.iut.exo1;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

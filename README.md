@@ -25,14 +25,16 @@ Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE 
 
 # Exercice 1
 
-1. Créez et implémentez la classe `Etudiant` avec les attributs suivants : nom, prénom, date de naissance, adresse mail, adresse postale. Pour représenter les dates vous pouvez utiliser la classe statique `LocalDate` du package `java.time`. La syntaxe pour la création d'une date est la suivante :
+1. Créez et implémentez la classe `Etudiant` avec les attributs suivants : nom, prénom, date de naissance, adresse mail,
+ adresse postale. Pour représenter les dates vous pouvez utiliser la classe statique `LocalDate` du package `java.time`.
+ Voici un exemple de création d'une date :
  
     ```java
     import java.time.LocalDate;
  
     class GestionEtudiants {
         public static void main(String args[]) {
-    		  LocalDate maDate = LocalDate.of(2019, Month.FEBRUARY, 4);
+            LocalDate maDate = LocalDate.of(2019, Month.FEBRUARY, 4);
         }
     }
     ```
@@ -90,11 +92,15 @@ avec un constructeur adéquat. Ajoutez dans `Matiere` une méthode accesseur `ge
 
 1. Sans toucher au code des autres classes, ajoutez à la classe `Etudiant` une méthode `calculerMoyenne()` qui permet
 de calculer la moyenne des notes de l'étudiant. Pensez à ajouter des tests unitaires pour vérifier le bon fonctionnement
- de cette fonction. Pour créer une classe de tests unitaires, faites un click droit sur le nom de la classe &rightarrow;
-  _Generate_ &rightarrow; _Test..._ &rightarrow; dans l'onglet _Testing library_
-  vous choisirez l'option _JUnit 5_ &rightarrow; Donnez un nom appropriée à votre classe de Test et clickez sur _Ok_.
-  Comme pour le TP précédent, la classe de tests générée sera automatiquement placée dans le même package que la classe testée.
-  dans le répertoire correspondant aux tests. Pour écrire vos tests, vous pouvez vous inspirer des exemples vues dans le TP précédent.
+ de cette fonction. Pour créer une classe de tests unitaires, placez-vous dans la classe que vous souhaitez tester
+    * appuyez sur <kbd>Alt</kbd>+<kbd>Insert</kbd> (ou bien faites un clic droit sur le nom de la classe &rightarrow;
+  _Generate_)
+   * Choisissez _Test..._
+   * dans l'onglet _Testing library_ vous choisirez l'option _JUnit 5_ 
+   * donnez un nom approprié à votre classe de tests unitaires (par ex. `EtudiantTest`) et cliquez sur _Ok_.
+   
+  Comme pour le TP précédent, la classe de tests générée sera automatiquement placée dans le même package que la classe
+  testée et dans le répertoire correspondant aux tests (. Pour écrire vos tests, vous pouvez vous inspirer des exemples vues dans le TP précédent.
 
 1. Vérifiez que votre programme fonctionne bien dans la classe principale.
 
