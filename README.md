@@ -31,7 +31,9 @@ package de l'exercice suivant à l'aide de l'IDE dans le panneau *Project* à ga
 les déclarations de package. Garder une trace de progression pour chaque exercice vous permettra de mieux comparer
 votre travail pour chaque exercice et vous permettra également de mieux _réviser_ plus tard. 
 
-[Lien pour forker le projet]
+Cliquez sur le lien ci-dessous pour faire votre fork privé du TP :
+
+https://classroom.github.com/a/FY0Qks_1
 
 ### Consignes
 - Sauf indication contraire, **tous** les attributs que vous allez déclarer dans ce TP (et dans les TPs qui suivent) doivent être privés (`private`).
