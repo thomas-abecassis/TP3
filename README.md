@@ -7,6 +7,16 @@
 * Le [forum Piazza](https://piazza.com/class/jpv7gf0lltk4kc) de ce cours pour poser vos questions
 * [Email](mailto:petru.valicov@umontpellier.fr) pour une question d'ordre privée concernant le cours.
 
+Avant de démarrer le TP, vérifiez que vous n'avez pas atteint votre quota d'espace de stockage autorisé :
+
+* placez-vous dans votre `$HOME` et utilisez les commandes suivantes :
+    * `du -sh` pour voir combien d'espace vous avez déjà utilisé
+    * `du -sh *` pour voir combien d'espace vous avez déjà utilisé pour chaque fichier (sans fichiers cachés)
+    * `du -sch .[!.]* *` pour voir combien d'espace vous avez déjà utilisé pour chaque fichier, y compris les fichiers cachés
+* Supprimez les fichiers inutiles.
+* Pour évitez des problèmes durant vos TPs d'informatique, vous devriez toujours **garder 300-400 Mo d'espace libre**.
+
+
 ## TP 3 : *Java* - références, constructeurs, première application orientée objets
 
 On se propose ici de réaliser une application de gestion des étudiants dans un département informatique d'un IUT. 
