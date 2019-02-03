@@ -95,7 +95,7 @@ https://classroom.github.com/a/FY0Qks_1
 
 **Rappel :** Pour préserver le code écrit dans l'exercice précédent copiez l'ensemble des classes du package
 `fr.umontpellier.iut.exo1` dans le package `fr.umontpellier.iut.exo2` en utilisant les outils de *refactoring* de l'IDE.
-Pour ce faire : click droit sur le nom de la classe &rightarrow; _Refactor_ &rightarrow; _Copy_  
+Pour ce faire : clic droit sur le nom de la classe &rightarrow; _Refactor_ &rightarrow; _Copy_  
 
 On souhaite étoffer le modèle objet conçu auparavant en y incluant les aspects pédagogiques du département. Pour cela on vous demande de gérer les *matières*, les *enseignants* et les *notes*. 
 
@@ -105,11 +105,11 @@ avec un constructeur adéquat. Ajoutez dans `Matiere` une méthode accesseur `ge
 
 1. Une `Note` est définie par une matière et par un nombre réel (qui représente la valeur de la note). Déclarez la classe correspondante et ajoutez des méthodes accesseurs pour chacun des attributs.
 
-1. Ajoutez à la classe `Etudiant` un attribut correspondant à la liste de ses notes et une méthode `noter(...)` qui prend en paramètre une matière et une valeur réelle, et ajoute une `Note` à la liste des notes de l'étudiant.
+1. Ajoutez à la classe `Etudiant` un attribut correspondant à la liste de ses notes et une méthode `noter(...)` qui prend en paramètre une matière et une valeur réelle, crée un objet de type `Note` et l'ajoute à la liste des notes de l'étudiant.
 
 1. Sans toucher au code des autres classes, ajoutez à la classe `Etudiant` une méthode `calculerMoyenne()` qui permet
 de calculer la moyenne des notes de l'étudiant. Pensez à ajouter des tests unitaires pour vérifier le bon fonctionnement
- de cette fonction. Pour créer une classe de tests unitaires, placez-vous dans la classe que vous souhaitez tester
+ de cette fonction. Pour créer une classe de tests unitaires, placez-vous dans la classe que vous souhaitez tester et :
     * appuyez sur <kbd>Alt</kbd>+<kbd>Insert</kbd> (ou bien faites un clic droit sur le nom de la classe &rightarrow;
   _Generate_)
    * Choisissez _Test..._
@@ -119,9 +119,9 @@ de calculer la moyenne des notes de l'étudiant. Pensez à ajouter des tests uni
   Comme pour le TP précédent, la classe de tests générée sera automatiquement placée dans le même package que la classe
   testée et dans le répertoire correspondant aux tests. Pour écrire vos tests, vous pouvez vous inspirer des exemples vues dans le TP précédent.
 
-1. Vérifiez que votre programme fonctionne bien dans la classe principale.
+5. Vérifiez que votre programme fonctionne bien dans la classe principale.
 
-1. Construisez le diagramme de classes correspondant au programme *Java* que vous avez écrit. Vous pouvez le faire sur papier ou en utilisant un logiciel de modélisation.
+6. Construisez le diagramme de classes correspondant au programme *Java* que vous avez écrit. Vous pouvez le faire sur papier ou en utilisant un logiciel de modélisation.
 
 # Exercice 3 (Bonus)
 
@@ -129,7 +129,7 @@ Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien ent
 de croître car beaucoup d'autres attributs sont susceptibles d'être ajoutés à la classe `Etudiant`.
 Observez aussi que lorsqu'on construit une instance d'`Etudiant` il est facile de se tromper dans l'ordre des paramètres
 du constructeur. Heureusement que l'IDE vous aide en vous  suggérant cette ordre lorsque vous programmez...
-De plus, les valeurs de certains attributs peuvent être inconnues au moment de la construction de l'objet : l'adresse de l'étudiant n'est pas encore connue car l'attribution des logements universitaires par les organismes correspondants n'a pas encore eu lieu; l'adresse mail étudiante n'est pas encore active au moment de l'inscription de l'étudiant, etc. Plusieurs solutions peuvent être envisagées.
+De plus, les valeurs de certains attributs peuvent être inconnues au moment de la construction de l'objet : l'adresse de l'étudiant n'est pas encore connue car l'attribution des logements universitaires par les organismes correspondants n'a pas encore eu lieu; l'adresse mail étudiante n'est pas encore active au moment de l'inscription de l'étudiant, etc. Plusieurs solutions peuvent être envisagées :
 
 1. Une solution est de définir plusieurs constructeurs avec différents paramètres et de les faire collaborer (voir exemples en [cours](http://pageperso.lif.univ-mrs.fr/~petru.valicov/Cours/M2103/BPOO_Generalites_x4.pdf)).
 Ainsi l'utilisateur pourra choisir le constructeur qui lui convient. C’est ce qu’on appelle une *construction télescopique*.
@@ -183,7 +183,7 @@ Ainsi l'utilisateur pourra choisir le constructeur qui lui convient. C’est ce 
 "organisée" et lisible. Le problème est qu'il est toujours possible d'instancier un objet de type `Etudiant`
 sans utiliser le _builder_ que vous avez écrit...
 C'est pour cela qu'il est possible d'améliorer la dernière solution en déclarant la classe `EtudiantBuilder`
-comme classe interne statique de la classe `Etudiant` et de rendre `private` le constructeur de la calsse `Etudiant`.
+comme classe interne statique de la classe `Etudiant` et de rendre `private` le constructeur de la classe `Etudiant`.
 Ainsi la construction pourra se faire exclusivement à travers le _builder_ et celui-ci servira uniquement à la construction
 des objets de type `Etudiant`, car c'est son seul rôle. Pour plus de détails et explications, voir le modèle de conception _Builder_.
  Une explication approfondie est donnée dans _Effective Java_, J. Blosch, (2nd or 3rd edition).
