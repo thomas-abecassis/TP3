@@ -26,8 +26,15 @@ Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE 
 # Exercice 1
 
 1. Créez et implémentez la classe `Etudiant` avec les attributs suivants : nom, prénom, date de naissance, adresse mail, adresse postale. Pour représenter les dates vous pouvez utiliser la classe statique `LocalDate` du package `java.time`. La syntaxe pour la création d'une date est la suivante :
+ 
     ```java
-    LocalDate maDate = LocalDate.of(2019, Month.FEBRUARY, 4);
+    import java.time.LocalDate;
+ 
+    class GestionEtudiants {
+        public static void main(String args[]) {
+    		  LocalDate maDate = LocalDate.of(2019, Month.FEBRUARY, 4);
+        }
+    }
     ```
     
     **Astuce :** Si vous utilisez la classe `LocalDate` dans votre code sans l'importer, l'IDE vous proposera automatiquement de l'importer (placez le curseur sur le nom de la classe et appuyez sur <kbd>Alt</kbd>+<kbd>↵</kbd> pour ajouter automatiquement la ligne `import java.time.LocalDate;` au début de votre fichier).
@@ -67,7 +74,9 @@ Il est vivement recommandé d'utiliser au maximum les fonctionnalités de l'IDE 
 
 # Exercice 2
 
-**Rappel :** Pour préserver le code écrit dans l'exercice précédent copiez l'ensemble des classes du package `fr.umontpellier.iut.exo1` dans le package `fr.umontpellier.iut.exo2` en utilisant les outils de *refactoring* de l'IDE.
+**Rappel :** Pour préserver le code écrit dans l'exercice précédent copiez l'ensemble des classes du package
+`fr.umontpellier.iut.exo1` dans le package `fr.umontpellier.iut.exo2` en utilisant les outils de *refactoring* de l'IDE.
+Pour ce faire : click droit sur le nom de la classe &rightarrow; _Refactor_ &rightarrow; _Copy_  
 
 On souhaite étoffer le modèle objet conçu auparavant en y incluant les aspects pédagogiques du département. Pour cela on vous demande de gérer les *matières*, les *enseignants* et les *notes*. 
 
@@ -79,7 +88,13 @@ avec un constructeur adéquat. Ajoutez dans `Matiere` une méthode accesseur `ge
 
 1. Ajoutez à la classe `Etudiant` un attribut correspondant à la liste de ses notes et une méthode `noter(...)` qui prend en paramètre une matière et une valeur réelle, et ajoute une `Note` à la liste des notes de l'étudiant.
 
-1. Sans toucher au code des autres classes, ajoutez à la classe `Etudiant` une méthode `calculerMoyenne()` qui permet de calculer la moyenne des notes de l'étudiant. Pensez à ajouter des tests unitaires pour vérifier le bon fonctionnement de cette fonction.
+1. Sans toucher au code des autres classes, ajoutez à la classe `Etudiant` une méthode `calculerMoyenne()` qui permet
+de calculer la moyenne des notes de l'étudiant. Pensez à ajouter des tests unitaires pour vérifier le bon fonctionnement
+ de cette fonction. Pour créer une classe de tests unitaires, faites un click droit sur le nom de la classe &rightarrow;
+  _Generate_ &rightarrow; _Test..._ &rightarrow; dans l'onglet _Testing library_
+  vous choisirez l'option _JUnit 5_ &rightarrow; Donnez un nom appropriée à votre classe de Test et clickez sur _Ok_.
+  Comme pour le TP précédent, la classe de tests générée sera automatiquement placée dans le même package que la classe testée.
+  dans le répertoire correspondant aux tests. Pour écrire vos tests, vous pouvez vous inspirer des exemples vues dans le TP précédent.
 
 1. Vérifiez que votre programme fonctionne bien dans la classe principale.
 
@@ -136,9 +151,11 @@ Observez que la classe `Etudiant` a un constructeur avec 4 paramètres. Bien ent
     
     Ajoutez la classe `EtudiantBuilder` à votre application pour que l'instruction ci-dessus fonctionne.
     
-**Remarque :** Observez que la classe `EtudiantBuilder` sert uniquement à instancier des objets `Etudiant` de manière
-"organisée". D'autre part, il est toujours possible d'instancier un objet de type `Etudiant` sans utiliser le _builder_...
- C'est pour cela qu'il est possible d'améliorer la dernière solution en déclarant la classe `EtudiantBuilder`
+**Remarque :** Vous noterez que la classe `EtudiantBuilder` sert uniquement à instancier des objets `Etudiant` de manière
+"organisée" et lisible. Le problème est qu'il est toujours possible d'instancier un objet de type `Etudiant`
+sans utiliser le _builder_ que vous avez écrit...
+C'est pour cela qu'il est possible d'améliorer la dernière solution en déclarant la classe `EtudiantBuilder`
 comme classe interne statique de la classe `Etudiant` et de rendre `private` le constructeur de la calsse `Etudiant`.
 Ainsi la construction pourra se faire exclusivement à travers le _builder_ qui pourra servira uniquement à la construction
-des objets de type `Etudiant`. Pour plus de détails et explications : _Effective Java_, J. Blosch, (2nd or 3rd edition)
+des objets de type `Etudiant`. Pour plus de détails et explications, voir le modèle de conception _Builder_.
+ Une explication approfondie est donnée dans _Effective Java_, J. Blosch, (2nd or 3rd edition).
