@@ -9,13 +9,22 @@ public class Departement {
     public Departement(String intitule, String adresse){
     this.specialite=intitule;
     this.adresse=adresse;
+    this.liste_etu=new ArrayList<>();
     }
 
     public String toString(){
-        return "Etudiant{" +
+        return "Departement{" +
                 "specialité='" + specialite + '\'' +
                 "adresse='" + adresse  +
+                "Etudiant=" +liste_etu+
                 '}';
     }
 
+    public void inscrire(Etudiant Etudiant){
+    this.liste_etu.add(Etudiant);
+    }
+
+    public void desinscrire(Etudiant Etudiant){
+        this.liste_etu.remove(Etudiant);
+    }
 }
